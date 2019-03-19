@@ -50,7 +50,7 @@ class LanguageController extends Controller
 
     public function store(Request $request)
     {   
-        
+        dd($request->files);
         $validator = Validator::make($request->all(), Language::rules());
         if($validator->fails())
         {
@@ -59,6 +59,11 @@ class LanguageController extends Controller
         }else{
 
             $language = new Language();
+            if($request->hasfile('files')){
+                dd('have');
+            }else{
+                dd('no');
+            }   
 
             $language->Lang_prefix = $request->Lang_prefix;
             $language->Lang_fullname = $request->Lang_fullname;
