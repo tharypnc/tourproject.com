@@ -41,6 +41,7 @@ class UserController extends Controller
             $user->Name = $request->Name;
             $user->Email = $request->Email;
             $user->Status = $request->Status;
+            $user->isAdmin = $request->IsAdmin;
             $user->Password = bcrypt($request->Password);
             $user->DateCreated = date('Y-m-d H:i:s');
             $user->save();
@@ -66,6 +67,7 @@ class UserController extends Controller
         }
        
         $user->Status = $request->Status;
+        $user->isAdmin = $request->IsAdmin;
         $user->DateCreated = date('Y-m-d H:i:s');
         $user->save();
 
@@ -90,11 +92,12 @@ class UserController extends Controller
 
     public function dologin(Request $request)
     {   
-
         $data = $request->all();
-        if (Auth::attempt(['Name' => $data['name'] , 'password' => $data['password'] ])) {
+        if (Auth::attempt(['Name' => $data['name'] , 'password' => $data['password'],'Status' =>1])) {
+            Auth::login(Auth::user(), true);
             return Redirect::intended('/');
         } else {
+            return View::make('base/login')->with('login_errors', true);
             return Redirect::back()->withErrors('That username/password combo does not exist.');
         }
     }

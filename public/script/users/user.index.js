@@ -1,12 +1,13 @@
 (function(){
 
     $('.list-group-item:eq(9)').addClass('active');
+    var idAdmin = $("#isAdmin").val();
 
-    ViewUser();
-
+    ViewUser(idAdmin);
+    
     function ViewUser(){
         GetUsers(function(item){
-            RenderTable(item.Users, item.UserId, function(element){
+            RenderTable(item.Users, idAdmin, function(element){
                 $('#userTable tbody').html(element);
             });
         });
@@ -30,7 +31,7 @@
         });
     }
 
-    function RenderTable(users,userId, callback){
+    function RenderTable(users,idAdmin, callback){
         var element = '';
         if((users != null) && (users.length > 0)){
             $.each(users, function(index, item){
@@ -40,15 +41,31 @@
                     status = 'Block';
                     var color ='red';
                 }
+                if( Number(idAdmin) === 0 && Number(item.isAdmin) === 0 ){ 
+
                 element += '<tr data-id="' + item.Id + '">' +
-                '<td>' + item.Name + '</td>' +
-                '<td>' + item.Email + '</td>' +
-                '<td style="color:'+color+'">' + status + '</td>' +
-                '<td class="center">' + item.DateCreated + '</td>' +
-                '<td class="center">';
-                 element +='<a href="' + burl + '/edit/user/' + item.Id + '" class="btn btn-success btn-e"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> '+
-                           '<button type="button" class="btn btn-danger btn-e delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
-                           '</td></tr>';
+                    '<td>' + item.Name + '</td>' +
+                    '<td>' + item.Email + '</td>' +
+                    '<td style="color:'+color+'">' + status + '</td>' +
+                    '<td class="center">' + item.DateCreated + '</td>' +
+                    '<td class="center">'+
+                    '<a href="' + burl + '/edit/user/' + item.Id + '" class="btn btn-success btn-e"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>'+
+                    '&nbsp;<button type="button" class="btn btn-danger btn-e delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
+                
+                }else if( Number(idAdmin) === 1){
+
+                element += '<tr data-id="' + item.Id + '">' +
+                    '<td>' + item.Name + '</td>' +
+                    '<td>' + item.Email + '</td>' +
+                    '<td style="color:'+color+'">' + status + '</td>' +
+                    '<td class="center">' + item.DateCreated + '</td>' +
+                    '<td class="center">'+
+                    '<a href="' + burl + '/edit/user/' + item.Id + '" class="btn btn-success btn-e"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>'+
+                    '&nbsp;<button type="button" class="btn btn-danger btn-e delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
+                
+                }
+
+                element += '</td></tr>';
             });
         }
         if(typeof callback == 'function'){

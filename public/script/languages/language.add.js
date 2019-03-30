@@ -1,6 +1,5 @@
 (function(){
 
-    
     var posStr='';
 
     /*
@@ -12,13 +11,13 @@
     var str ='';
     $(document).on("click", ".pos-image", function () {
         
-        str = '<input type="file" class="ref-'+countData+'" id="files" name="files[]" style="width: 95px;display:none"/>';
+        str = '<input type="file" multiple="multiple" class="ref-'+countData+'" id="files" name="files[]" style="width: 95px;display:none"/>';
         app.before(str);
         $(".ref-"+countData).click();
 
     });
 
-    //Function Upload Image
+    //Function Upload Image//
     $(document).on("change","#files", function (e) {
         unsaved =true;
         var data_file = e.target.files;
@@ -27,7 +26,6 @@
         //Allow Size
         var allowed_size = 2; //2MB
         var fileName = data_file[0].name;
-
         var ext = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
 
         if (extensionType(allowed_extensions,fileName) && (fileSize(data_file[0].size,allowed_size))) {
@@ -35,7 +33,7 @@
             posStr = '<div class="img-preview">' +
                      '<div class="img">' +
                      '<img class="img-center img-responsive" src="' + URL.createObjectURL(data_file[0]) +'">'+
-                     '</div>'+
+                     '</div>' +
                      '<span title="Remove" data-id='+countData+' class="fa fa-times pointer removeImage" style="position: absolute;right: 2px;top: -2px;color: #fc0404; display: none;"></span>' +
                      '</div>';
 
@@ -68,10 +66,12 @@
     function SaveOrUpdate() {
         $('body').append(Loading());
         var item = $('#formLanguage').serialize();
+        var formData = new FormData($(this)[0]);
         $.ajax({
             type: 'POST',
             url: burl + '/insert/language',
-            data: item
+            data: item,
+            dataType: 'json'
         }).done(function (data) {
             if (data.IsError == false) {
 

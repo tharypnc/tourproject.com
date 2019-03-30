@@ -3,6 +3,10 @@
 <div class="box-title" style="margin-bottom:25px;">
     <i class="fa fa-plus-square" aria-hidden="true"></i> Add New User
 </div>
+<?php 
+   $data = Auth::user();
+   $isAdmin = $data->isAdmin;
+?>
 <form id="formUser" method="POST" onsubmit="return false;">
     {{ csrf_field() }}
     <table class="table table-bordered">
@@ -50,6 +54,22 @@
                 </div>
             </td>
         </tr>
+        <?php
+            /*Check is current login is super admin*/
+            if($isAdmin === 1){
+        ?>
+        <tr>
+            <th style="vertical-align:middle;">Super Admin</th>
+            <td>
+                <div class="form-group" >
+                    <select class="form-control" required id="IsAdmin" style="margin-bottom:-5px;width:250px;" name="IsAdmin">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+            <?php }?>
         </tbody>
     </table>
     <div>

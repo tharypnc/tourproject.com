@@ -50,7 +50,7 @@ class LanguageController extends Controller
 
     public function store(Request $request)
     {   
-        dd($request->files);
+
         $validator = Validator::make($request->all(), Language::rules());
         if($validator->fails())
         {
@@ -59,10 +59,11 @@ class LanguageController extends Controller
         }else{
 
             $language = new Language();
-            if($request->hasfile('files')){
-                dd('have');
+            $images = $request->file('input_img');
+            if ($images) {
+                dd($images);
             }else{
-                dd('no');
+                dd('11111111111111111');
             }   
 
             $language->Lang_prefix = $request->Lang_prefix;

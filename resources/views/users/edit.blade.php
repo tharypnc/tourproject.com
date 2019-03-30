@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 @section('content')
 <?php
+
+    $data = Auth::user();
+    $isAdmin = $data->isAdmin;
+    $isId    = $data->Id;
+
     function sel($value, $comvalue)
     {
         if($value == $comvalue){
@@ -32,13 +37,29 @@
                 </div>
             </td>
         </tr>
+        <?php
+            /*Check is current login is super admin*/
+            if( $isAdmin === 1 && $user->Id !== $isId){
+        ?>
+        <tr>
+            <th style="vertical-align:middle;">Super Admin</th>
+            <td>
+                <div class="form-group" >
+                    <select class="form-control" required id="IsAdmin" style="margin-bottom:-5px;width:250px;" name="IsAdmin">
+                        <option value="0" {{sel($user->IsAdmin, 0)}}>No</option>
+                        <option value="1" {{sel($user->IsAdmin, 1)}}>Yes</option> 
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <?php }?>
         <tr>
             <th style="vertical-align:middle;">Status</th>
             <td>
                 <div class="form-group" >
                     <select class="form-control" id="Status" style="margin-bottom:-5px;width:250px;" name="Status">
                     <option value="1" {{sel($user->Status, 1)}}>Active</option>
-                        <option value="0" {{sel($user->Status, 0)}}>Inactive</option>  
+                    <option value="0" {{sel($user->Status, 0)}}>Inactive</option>  
                     </select>
                 </div>
             </td>

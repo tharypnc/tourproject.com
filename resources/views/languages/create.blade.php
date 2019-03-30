@@ -7,7 +7,7 @@
 <div class="box-title">
     <i class="fa fa-plus-square" aria-hidden="true"></i> Add New Language
 </div>
-<form id="formLanguage" class="form-horizontal" method="POST" onsubmit="return false;">
+<form id="formLanguage" class="form-horizontal" enctype="multipart/form-data" method="POST" onsubmit="return false;">
     {{ csrf_field() }}
     <div class="panel panel-default">
         <div class="panel-body">
@@ -30,6 +30,7 @@
                         <span class="small"><img class="pos-image" style="width: 108px; height: 91px; float:left;padding: 2px;border: solid 1px #e4dfdf;" src="{{url('/img/placeholder.png')}}"></span>
                         <div class="clearfix"></div>
                 </span>
+                <input name="input_img" type="file" id="input_img" class="form-control">
                 </div>
             </div>
             <div class="form-group">

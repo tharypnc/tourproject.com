@@ -45,6 +45,7 @@ CREATE TABLE `users` (
   `Name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Email` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Status` tinyint(4) DEFAULT NULL,
+  `isAdmin` tinyint(4) DEFAULT NULL,
   `Password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `DateCreated` datetime NOT NULL,
   PRIMARY KEY (`Id`)
@@ -52,7 +53,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`Id`,`TokenKey`,`Name`,`Email`,`Status`,`Password`,`DateCreated`) values (1,NULL,'admin','bonvoathit@gamil.com',1,'$2y$10$P30PbjwH2xXmIIGXXbx6CeL9ksAgNdHbI3iNpC9.iQ8NdfQ3dpJkq','2016-07-18 14:15:22'),(2,NULL,'thary','thary.sat@gmail.com',1,'$2y$10$Pa5M0j0lEEJhyAanHBTkdOgN/uzpIsALfLdXZTKEwoAUm0BgXGXhu','2019-03-15 07:28:46'),(3,NULL,'sok_pisey','sok.pisey@gmail.com',1,'$2y$10$M.EMVBaN0wzNcg7Jb6.5dOejDqA1aRUDuv0XW8vW0zPwWq9fW1QB6','2019-03-16 06:19:12'),(4,NULL,'sopheak','sopheak.sat@gmail.com',1,'$2y$10$JhBwEtwGVR00wyzQzdKWtOi8ksmGaNZGi2M.e6i7bpb/PV07Eu3W2','2019-03-16 10:52:45');
+insert  into `users`(`Id`,`TokenKey`,`Name`,`Email`,`Status`,`isAdmin`,`Password`,`DateCreated`) values (1,NULL,'admin','bonvoathit@gamil.com',1,1,'$2y$10$P30PbjwH2xXmIIGXXbx6CeL9ksAgNdHbI3iNpC9.iQ8NdfQ3dpJkq','2019-03-27 15:14:31'),(2,NULL,'thary','thary.sat@gmail.com',1,0,'$2y$10$Pa5M0j0lEEJhyAanHBTkdOgN/uzpIsALfLdXZTKEwoAUm0BgXGXhu','2019-03-30 04:17:57'),(3,NULL,'sok_pisey','sok.pisey@gmail.com',1,NULL,'$2y$10$M.EMVBaN0wzNcg7Jb6.5dOejDqA1aRUDuv0XW8vW0zPwWq9fW1QB6','2019-03-16 06:19:12'),(4,NULL,'sopheak','sopheak.sat@gmail.com',1,1,'$2y$10$JhBwEtwGVR00wyzQzdKWtOi8ksmGaNZGi2M.e6i7bpb/PV07Eu3W2','2019-03-30 07:03:52');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

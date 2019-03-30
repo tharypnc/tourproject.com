@@ -3,6 +3,10 @@
 <div class="box-title">
     <i class="fa fa-list" aria-hidden="true"></i> User List
 </div>
+<?php 
+   $data = Auth::user();
+   $isAdmin = $data->isAdmin;
+?>
 <div class="row memu-bar">
     <div class="col-sm-12">
         <div class="pull-right">
@@ -12,6 +16,7 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
+    <input type="hidden" id="isAdmin" name="isAdmin" value="{{$isAdmin}}">
         <table id="userTable" class="table table-bordered table-condensed table-hover">
             <thead>
                 <tr class="bg-white">
