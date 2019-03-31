@@ -18,6 +18,7 @@ Route::group(['prefix' => 'ajax'], function(){
 
 Route::group(['prefix' => 'view'], function(){
 
+    Route::get('/country', 'CountryController@index');
     Route::get('/language', 'LanguageController@index');
     Route::get('/user', 'UserController@index');
 
@@ -46,6 +47,7 @@ Route::group(['prefix' => 'filter'], function(){
 
 Route::group(['prefix' => 'find'], function(){
 
+    Route::get('/country', 'CountryController@search');
     Route::get('/language', 'LanguageController@search');
     Route::get('/user', 'UserController@search');
 
@@ -65,6 +67,7 @@ Route::group(['prefix' => 'find'], function(){
 
 Route::group(['prefix' => 'create'], function(){
 
+    Route::get('/country', 'CountryController@create');
     Route::get('/language', 'LanguageController@create');
     Route::get('/user', 'UserController@create');
 
@@ -84,6 +87,7 @@ Route::group(['prefix' => 'create'], function(){
 
 Route::group(['prefix' => 'insert'], function(){
 
+    Route::post('/country', 'CountryController@store');
     Route::post('/language', 'LanguageController@store');
     Route::post('/user', 'UserController@store');
 
@@ -102,6 +106,7 @@ Route::group(['prefix' => 'insert'], function(){
 
 Route::group(['prefix' => 'edit'], function(){
 
+    Route::get('/country/{id}', 'CountryController@edit');
     Route::get('/language/{id}', 'LanguageController@edit');
     Route::get('/user/{id}', 'UserController@edit');
     // Route::get('/customer/{id}', 'CustomerController@edit');
@@ -113,6 +118,7 @@ Route::group(['prefix' => 'edit'], function(){
 
 Route::group(['prefix' => 'update'], function(){
 
+    Route::post('/country', 'CountryController@update');
     Route::post('/language', 'LanguageController@update');
     Route::post('/user', 'UserController@update');
 
@@ -126,6 +132,7 @@ Route::group(['prefix' => 'update'], function(){
 
 Route::group(['prefix' => 'delete'], function(){
 
+    Route::get('/country/{id}', 'CountryController@destroy');
     Route::get('/language/{id}', 'LanguageController@destroy');
     Route::get('/user/{id}', 'UserController@destroy');
     

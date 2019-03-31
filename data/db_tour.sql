@@ -16,6 +16,23 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_tour` /*!40100 DEFAULT CHARACTER SET
 
 USE `db_tour`;
 
+/*Table structure for table `tbl_countries` */
+
+DROP TABLE IF EXISTS `tbl_countries`;
+
+CREATE TABLE `tbl_countries` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Country_Name` varchar(255) DEFAULT NULL,
+  `Photo` varchar(255) DEFAULT NULL,
+  `Status` tinyint(4) DEFAULT NULL,
+  `DateCreated` datetime DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_countries` */
+
+insert  into `tbl_countries`(`Id`,`Country_Name`,`Photo`,`Status`,`DateCreated`) values (1,'Japen','',1,'2019-03-31 15:32:59'),(3,'USA','DKkGrFDW0AACjNB.jpg',1,'2019-03-31 16:08:55'),(4,'Vietnam','images (1).png',1,'2019-03-31 16:45:54');
+
 /*Table structure for table `tbl_languages` */
 
 DROP TABLE IF EXISTS `tbl_languages`;
@@ -33,7 +50,7 @@ CREATE TABLE `tbl_languages` (
 
 /*Data for the table `tbl_languages` */
 
-insert  into `tbl_languages`(`Id`,`Lang_prefix`,`Lang_fullname`,`Lang_description`,`Lang_img`,`Lang_status`,`DateCreated`) values (1,'Ch','Chines','This is Chines Language',NULL,1,'2019-03-14 16:14:09'),(2,'En','English ','This is English Language',NULL,1,'2019-03-14 16:18:46'),(3,'FR','France','This is France Language',NULL,1,'2019-03-16 15:56:59');
+insert  into `tbl_languages`(`Id`,`Lang_prefix`,`Lang_fullname`,`Lang_description`,`Lang_img`,`Lang_status`,`DateCreated`) values (2,'En','English ','This is English Language',NULL,1,'2019-03-14 16:18:46'),(3,'FR','France','This is France Language',NULL,1,'2019-03-16 15:56:59');
 
 /*Table structure for table `users` */
 
