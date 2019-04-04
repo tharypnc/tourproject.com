@@ -31,13 +31,47 @@ class CountryController extends Controller
     
         $id = $request->Id;
         $country = Country::find($id);
+        $images = $request->file('files');
+        $newFilename ='';
 
+        if ($images) {
+
+            $dir = public_path('/uploads/countries/');
+            
+            /*Check folder if don't have create new*/
+            if(!File::isDirectory($dir)){
+                File::makeDirectory($dir, 0777, true, true);
+            }
+
+            $newFilename =$images->getClientOriginalName();
+            $i=1;
+            while (File::exists($dir.$newFilename)) 
+            {
+                //if file exit, add unique name
+                $newFilename = $i.'_'.date('YmdHis') . "_" . $newFilename;
+                $i++;
+            }
+            /* Upload to folder */
+            $images->move($dir, $newFilename);
+
+            $country->Photo = $newFilename;
+
+            /* Remove Old Image*/
+            $old_image = Country::where('Id', '=', $id)->first();
+            $dir = public_path('/uploads/countries/'.$old_image['Photo'].'');
+
+            if (file_exists($dir)) {
+                @unlink($dir);
+            }
+            
+        }    
+        
         $country->Country_Name = $request->Country_Name;
         $country->Status = $request->Status;
         $country->DateCreated = date('Y-m-d H:i:s');
         $country->save();
 
-        return response()->json($this->Results);
+        return view('countries/index');
     }
 
     public function search()
@@ -50,14 +84,6 @@ class CountryController extends Controller
 
     public function store(Request $request)
     {   
-
-        $validator = Validator::make($request->all(), Country::rules());
-        if($validator->fails())
-        {
-            $this->Fail();
-            $this->SetMessage($validator->messages()->first());
-        }else{
-
             $country = new Country();
             $images = $request->file('files');
             $newFilename ='';
@@ -81,7 +107,6 @@ class CountryController extends Controller
 
                 $images->move($dir, $newFilename);
 
-                
             }    
             
             if($newFilename ==''){
@@ -98,27 +123,50 @@ class CountryController extends Controller
             $country->DateCreated = date('Y-m-d H:i:s');
             $country->save();
             $this->SetData($country);
-        }
 
         return view('countries/index');
     }
-
+    
     public function destroy($id)
     {
         
         $country = Country::where('Id', '=', $id)->first();
 
         $rowaffect = Country::find($id)->delete();
-        $dir = public_path('/uploads/countries/'.$country['Photo'].'');
-
-        if (file_exists($dir)) {
-            @unlink($dir);
-         }
 
         if($rowaffect == 0){
+
             $this->SetError(true);
-            $this->SetMessage('Error on deletd country!');
+            $this->SetMessage('Error on delete country!');
+
+        }else{
+
+            $dir = public_path('/uploads/countries/'.$country['Photo'].'');
+
+            if (file_exists($dir)) {
+
+                @unlink($dir);
+
+            }
         }
+
         return response()->json($this->Results);
     }
+
+    // public function destroyImage($id)
+    // {
+
+    //     $country = Country::where('Id', '=', $id)->first();
+        
+    //     $dir = public_path('/uploads/countries/'.$country['Photo'].'');
+
+    //     if (file_exists($dir)) {
+    //         @unlink($dir);
+    //     }
+
+    //     $country->Photo = '';
+    //     $country->save();
+        
+    //     return response()->json($this->Results);
+    // }
 }

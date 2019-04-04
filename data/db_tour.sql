@@ -27,11 +27,11 @@ CREATE TABLE `tbl_countries` (
   `Status` tinyint(4) DEFAULT NULL,
   `DateCreated` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_countries` */
 
-insert  into `tbl_countries`(`Id`,`Country_Name`,`Photo`,`Status`,`DateCreated`) values (1,'Japen','',1,'2019-03-31 15:32:59'),(3,'USA','DKkGrFDW0AACjNB.jpg',1,'2019-03-31 16:08:55'),(4,'Vietnam','images (1).png',1,'2019-03-31 16:45:54');
+insert  into `tbl_countries`(`Id`,`Country_Name`,`Photo`,`Status`,`DateCreated`) values (1,'Japen','images.png',1,'2019-04-04 17:00:59'),(5,'France','2176510.png',1,'2019-04-04 17:01:06'),(6,'USA','DKkGrFDW0AACjNB.jpg',1,'2019-04-04 17:01:13'),(7,'Vietnam','images (1).png',1,'2019-04-04 17:01:27'),(8,'Frances','1_20190404170142_DKkGrFDW0AACjNB.jpg',1,'2019-04-04 17:01:42');
 
 /*Table structure for table `tbl_languages` */
 

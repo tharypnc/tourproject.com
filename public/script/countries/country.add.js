@@ -36,7 +36,6 @@
                      '</div>' +
                      '<span title="Remove" data-id='+countData+' class="fa fa-times pointer removeImage" style="position: absolute;right: 2px;top: -2px;color: #fc0404; display: none;"></span>' +
                      '</div>';
-
             $('.newPos').before(posStr);
             countImage();
             $('.Ref-'+countData).hide();

@@ -31,12 +31,14 @@
 
     function RenderTable(countries, callback){
         var element = '';
+        var color ='';
         var i =1;
         if((countries != null) && (countries.length > 0)){
             $.each(countries, function(index, item){
                 var status = 'Active';
-                if(item.Status == 0){
+                if(item.Status == 2){
                     status = 'Inactive';
+                    color = 'style="color:red"';    
                 }
                 if(item.Photo ==''){
                     img_path = '../img/placeholder.png';
@@ -47,10 +49,10 @@
                                 '<td>' + (i++) + '</td>' +
                                 '<td>' + item.Country_Name + '</td>' +
                                 '<td class="center"><img style="width: 70px; height: 50px; float:left;padding: 2px;border: solid 1px #e4dfdf;" src="'+img_path+'"/></td>' +
-                                '<td class="center">' + status + '</td>' +
+                                '<td class="center" '+color+' >' + status + '</td>' +
                                 '<td class="center">' + item.DateCreated + '</td>' +
                                 '<td class="center">' +
-                                    '<a href="' + burl + '/edit/language/' + item.Id + '" class="btn btn-success btn-e"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> ' +
+                                    '<a href="' + burl + '/edit/country/' + item.Id + '" class="btn btn-success btn-e"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> ' +
                                     '<button type="button" class="btn btn-danger btn-e delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>' +
                                 '</td>'
                             '</tr>';
@@ -91,4 +93,5 @@
             });
         });
     });
+
 })();

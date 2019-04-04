@@ -32,10 +32,17 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
+                                <div class="col-md-10 col-md-offset-4">
                                     <button type="submit" id="btnLogin" class="btn btn-primary">
                                         <i class="fa fa-btn fa-sign-in"></i> Log in
                                     </button>
+                                    <?php 
+                                        if($login_errors ==1) {
+                                           echo  "<br/><span style='color:red'> incorrect password or username! </span>";
+                                        }else{
+                                            echo "";
+                                        }
+                                     ?>
                                 </div>
                             </div>
                         </form>

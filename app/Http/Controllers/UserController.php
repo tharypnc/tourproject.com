@@ -80,14 +80,14 @@ class UserController extends Controller
         $rowaffect = User::find($id)->delete();
         if($rowaffect == 0){
             $this->SetError(true);
-            $this->Results['Message'] = 'ការលុប​ទិន្នន័យមានបញ្ហាសូមព្យា​យាម​ម្តងទៀត';
+            $this->Results['Message'] = 'Error on user,Pls try agian!';
         }
         return response()->json($this->Results);
     }
 
     public function login()
     {
-        return view('auth.login');
+        return view('auth.login')->with('login_errors', 0);
     }
 
     public function dologin(Request $request)
@@ -97,8 +97,7 @@ class UserController extends Controller
             Auth::login(Auth::user(), true);
             return Redirect::intended('/');
         } else {
-            return View::make('base/login')->with('login_errors', true);
-            return Redirect::back()->withErrors('That username/password combo does not exist.');
+            return View('auth.login')->with('login_errors', true);
         }
     }
 

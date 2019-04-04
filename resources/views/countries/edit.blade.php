@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" href="{{url('/css/plugin/icheck/iCheck.css')}}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{{url('/css/countries/country.css')}}" media="screen" title="no title" charset="utf-8">
 @endsection
 @section('content')
 <?php
@@ -10,39 +11,42 @@
             echo 'selected="selected"';
         }
     }
+    $src_path ='';
+    if( $country->Photo !='' ){
+        $src_path = '../../uploads/countries/'.$country->Photo.'';
+    }else{
+         $src_path = '../../img/placeholder.png';
+    }
 ?>
 <div class="box-title">
-    <i class="fa fa-plus-square" aria-hidden="true"></i> Edit Language
+    <i class="fa fa-plus-square" aria-hidden="true"></i> Edit Country
 </div>
-<form id="formLanguage" class="form-horizontal" method="POST" onsubmit="return false;">
+<form id="formCountry" class="form-horizontal" enctype="multipart/form-data" method="POST" action="{{ url('/update/country') }}">
     {{ csrf_field() }}
-    <input type="hidden" name="Id" value="{{$language->Id}}">
+    <input type="hidden" name="Id" value="{{$country->Id}}">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">Prefix</label>
+                <label class="col-sm-1 control-label" style="width:150px;">Name</label>
                 <div class="col-sm-1" style="width:300px;">
-                    <input type="text" name="Lang_prefix" class="form-control" value="{{$language->Lang_prefix}}">
+                    <input type="text" name="Country_Name" class="form-control" value="{{$country->Country_Name}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">FullName</label>
-                <div class="col-sm-1" style="width:300px;">
-                    <input type="text" name="Lang_fullname" class="form-control" value="{{$language->Lang_fullname}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">Description</label>
-                <div class="col-sm-1" style="width:300px;">
-                    <input type="text" name="Lang_description" class="form-control" value="{{$language->Lang_description}}">
+                <label class="col-sm-1 control-label" style="width:150px;">Image</label>
+                <div class="col-sm-1" style="width:45%;">
+                <span class="newPos" title="Browse Image">
+                        <span class="small"><img id="pos-image" class="pos-image" style="width: 108px; height: 91px; float:left;padding: 2px;border: solid 1px #e4dfdf;" src="{{$src_path}}"></span>
+                        <div class="clearfix"></div>
+                </span>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="width:150px;">Status</label>
                 <div class="col-sm-2" style="width:300px;">
-                    <select class="form-control " id="Lang_status" name="Lang_status" style="font-size:10pt;">
-                        <option value="1" {{sel($language->Lang_status, 1)}}>Active</option>
-                        <option value="2" {{sel($language->Lang_status, 2)}}>Inactive</option>  
+                    <select class="form-control " id="Status" name="Status" style="font-size:10pt;">
+                        <option value="1" {{sel($country->Status, 1)}}>Active</option>
+                        <option value="2" {{sel($country->Status, 2)}}>Inactive</option>  
                     </select>
                 </div>
             </div>
@@ -50,7 +54,7 @@
                 <label class="col-sm-1 control-label" style="width:150px;"></label>
                 <div class="col-sm-1" style="width:300px;">
                     <button type="submit" id="save" class="btn btn-success">Save</button>
-                    <a href="{{url('/view/language')}}" class="btn btn-danger">Cancel</a>
+                    <a href="{{url('/view/country')}}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>
@@ -59,5 +63,6 @@
 @endsection
 @section('script')
 <script src="{{url('/script/plugin/icheck/icheck.js')}}" charset="utf-8"></script>
-<script src="{{url('/script/languages/language.update.js')}}" charset="utf-8"></script>
+<script src="{{url('/script/countries/country.update.js')}}" charset="utf-8"></script>
+<script src="{{url('/script/uploads/upload.js')}}" charset="utf-8"></script>
 @endsection

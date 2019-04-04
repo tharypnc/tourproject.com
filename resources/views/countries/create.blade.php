@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" href="{{url('/css/plugin/icheck/iCheck.css')}}" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="{{url('/css/languages/language.css')}}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="{{url('/css/countries/country.css')}}" media="screen" title="no title" charset="utf-8">
 @endsection
 @section('content')
 <div class="box-title">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">Image ( <span style="color:#0017FF" id="countImg">0</span> )</label>
+                <label class="col-sm-1 control-label" style="width:150px;">Image</label>
                 <div class="col-sm-1" style="width:45%;">
                 <span class="newPos" title="Browse Image">
                         <span class="small"><img id="pos-image" class="pos-image" style="width: 108px; height: 91px; float:left;padding: 2px;border: solid 1px #e4dfdf;" src="{{url('/img/placeholder.png')}}"></span>
