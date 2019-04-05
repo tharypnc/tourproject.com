@@ -24,16 +24,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">Image ( <span style="color:#0017FF" id="countImg">0</span> )</label>
-                <div class="col-sm-1" style="width:45%;">
-                <span class="newPos" title="Browse Image">
-                        <span class="small"><img class="pos-image" style="width: 108px; height: 91px; float:left;padding: 2px;border: solid 1px #e4dfdf;" src="{{url('/img/placeholder.png')}}"></span>
-                        <div class="clearfix"></div>
-                </span>
-                <input name="input_img" type="file" id="input_img" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="col-sm-1 control-label" style="width:150px;">Description</label>
                 <div class="col-sm-1" style="width:450px;">
                     <input type="text" name="Lang_description" class="form-control">

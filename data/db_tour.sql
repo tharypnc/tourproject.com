@@ -42,15 +42,14 @@ CREATE TABLE `tbl_languages` (
   `Lang_prefix` varchar(10) DEFAULT NULL,
   `Lang_fullname` varchar(50) DEFAULT NULL,
   `Lang_description` varchar(255) DEFAULT NULL,
-  `Lang_img` varchar(255) DEFAULT NULL,
   `Lang_status` bigint(20) DEFAULT NULL,
   `DateCreated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_languages` */
 
-insert  into `tbl_languages`(`Id`,`Lang_prefix`,`Lang_fullname`,`Lang_description`,`Lang_img`,`Lang_status`,`DateCreated`) values (2,'En','English ','This is English Language',NULL,1,'2019-03-14 16:18:46'),(3,'FR','France','This is France Language',NULL,1,'2019-03-16 15:56:59');
+insert  into `tbl_languages`(`Id`,`Lang_prefix`,`Lang_fullname`,`Lang_description`,`Lang_status`,`DateCreated`) values (2,'En','English ','This is English Language',1,'2019-03-14 16:18:46'),(3,'FR','France','This is France Languages',1,'2019-04-05 15:36:33'),(4,'JP','Japan','This is Japan Language',1,'2019-04-05 15:36:28');
 
 /*Table structure for table `users` */
 

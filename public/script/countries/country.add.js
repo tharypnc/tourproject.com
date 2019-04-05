@@ -1,5 +1,5 @@
 (function(){
-
+    $('.list-group-item:eq(1)').addClass('active');
     var posStr='';
 
     /*

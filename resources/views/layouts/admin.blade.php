@@ -20,13 +20,7 @@
           <a href="{{url('/')}}" class="list-group-item center">Tour Guide System</a>
           <a href="{{url('/view/country')}}" class="list-group-item bar"><i class="fa fa-flag" aria-hidden="true"></i> Manage Country</a>
           <a href="{{url('/view/language')}}" class="list-group-item bar"><i class="fa fa-language" aria-hidden="true"></i> Manage Language</a>
-          <a href="{{url('/view/sale')}}" class="list-group-item bar"><i class="fa fa-cart-plus" aria-hidden="true"></i> Manage Content</a>
-          <!--<a href="{{url('/view/import')}}" class="list-group-item bar"><i class="fa fa-download" aria-hidden="true"></i> ការទិញចូល</a>
-          <a href="{{url('/view/customer')}}" class="list-group-item bar"><i class="fa fa-user-secret" aria-hidden="true"></i> អតិថិជន</a>
-          <a href="{{url('/view/supplier')}}" class="list-group-item bar"><i class="fa fa-user-plus" aria-hidden="true"></i> អ្នកផ្គត់ផ្គង់</a>
-          <a href="{{url('/view/income')}}" class="list-group-item bar"><i class="fa fa-money" aria-hidden="true"></i> ចំណូល</a>
-          <a href="{{url('/view/expanse')}}" class="list-group-item bar"><i class="fa fa-share-alt-square" aria-hidden="true"></i> ចំណាយ</a>
-          <a href="{{url('/view/item')}}" class="list-group-item bar"><i class="fa fa-shopping-bag" aria-hidden="true"></i> មុខទំនិញ<span class="badge badge4" style="display:none;">0</span></a> -->
+          <a href="{{url('/')}}" class="list-group-item bar"><i class="fa fa-cart-plus" aria-hidden="true"></i> Manage Content</a>
           <a href="{{url('/view/user')}}" class="list-group-item bar"><i class="fa fa-users" aria-hidden="true"></i> Manage Users</a>
       </div>
     </div>

@@ -1,4 +1,6 @@
 (function(){
+
+    $('.list-group-item:eq(2)').addClass('active');
     $(':radio').iCheck({
         radioClass: 'iradio_minimal'
     });

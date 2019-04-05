@@ -1,6 +1,6 @@
 (function(){
 
-    $('.list-group-item:eq(4)').addClass('active');
+    $('.list-group-item:eq(2)').addClass('active');
     ViewItem();
 
     function ViewItem(){

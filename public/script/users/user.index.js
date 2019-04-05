@@ -1,6 +1,6 @@
 (function(){
 
-    $('.list-group-item:eq(9)').addClass('active');
+    $('.list-group-item:eq(4)').addClass('active');
     var idAdmin = $("#isAdmin").val();
 
     ViewUser(idAdmin);

@@ -59,13 +59,6 @@ class LanguageController extends Controller
         }else{
 
             $language = new Language();
-            $images = $request->file('input_img');
-            if ($images) {
-                dd($images);
-            }else{
-                dd('11111111111111111');
-            }   
-
             $language->Lang_prefix = $request->Lang_prefix;
             $language->Lang_fullname = $request->Lang_fullname;
             $language->Lang_description = $request->Lang_description;

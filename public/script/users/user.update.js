@@ -1,6 +1,6 @@
 (function(){
 
-    $('.list-group-item:eq(10)').addClass('active');
+    $('.list-group-item:eq(4)').addClass('active');
     SetValidation();
     function SaveOrUpdate() {
         $('body').append(Loading());
