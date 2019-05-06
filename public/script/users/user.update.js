@@ -1,5 +1,5 @@
 (function(){
-
+    var idAdmin = $("#isAdmin").val();
     $('.list-group-item:eq(4)').addClass('active');
     SetValidation();
     function SaveOrUpdate() {
@@ -11,9 +11,13 @@
             data: item
         }).done(function (data) {
             if (data.IsError == false) {
-                window.location.href = burl + '/view/user';
+                if(idAdmin == 1){
+                    window.location.href = burl + '/view/user';
+                }else{
+                    swal(data.Message, '', 'success');
+                }
             } else {
-                swal(data.Message, '', 'warning');
+                swal('Data updated Successfully!','', 'warning');
             }
         }).complete(function (data) {
             $('body').find('.loading').remove();

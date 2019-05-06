@@ -6,25 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    protected $table = 'Customers';
+    protected $table = 'tbl_customers';
     protected $primaryKey = 'Id';
     public $timestamps = false;
 
     public static function rules()
     {
         $rules = array(
-            'CustomerCode'  => 'required|unique:Customers',
-            'CustomerName'  => 'required'
+            'Name'  => 'required|unique:tbl_customers',
+            'Email'  => 'required'
         );
 
         return $rules;
     }
 
-    const NORMAL = 0;
+    const ACTIVE = 1;
 
-    const ASKINFO = 1;
-
-    const SELLER = 2;
-
-    const CLOSE = 3;
+    const INACTIVE = 0;
 }

@@ -5,6 +5,7 @@ Route::group(['prefix' => '/'], function(){
     Route::get('login', 'UserController@login');
     Route::post('dologin', 'UserController@dologin');
     Route::get('logout', 'UserController@logout');
+    Route::get('notificationCount', 'HomeController@notificationCount');
     Route::get('notification', 'HomeController@notification');
 });
 

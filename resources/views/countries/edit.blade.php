@@ -36,7 +36,7 @@
                 <label class="col-sm-1 control-label" style="width:150px;">Image</label>
                 <div class="col-sm-1" style="width:45%;">
                 <span class="newPos" title="Browse Image">
-                        <span class="small"><img id="pos-image" class="pos-image" style="width: 108px; height: 91px; float:left;padding: 2px;border: solid 1px #e4dfdf;" src="{{$src_path}}"></span>
+                        <span class="small"><img id="pos-image" class="pos-image" style="width: 150px; height: 91px; float:left;padding: 2px;border: solid 1px #e4dfdf;" src="{{$src_path}}"></span>
                         <div class="clearfix"></div>
                 </span>
                 </div>

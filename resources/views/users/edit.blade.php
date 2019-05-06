@@ -4,8 +4,7 @@
 
     $data = Auth::user();
     $isAdmin = $data->isAdmin;
-    $isId    = $data->Id;
-
+    $user_login    = $data->Id;
     function sel($value, $comvalue)
     {
         if($value == $comvalue){
@@ -18,6 +17,7 @@
 </div>
 <form id="formUser" method="POST" onsubmit="return false;">
     {{ csrf_field() }}
+    <input type="hidden" name="Id" value="{{$user->Id}}">
     <input type="hidden" name="Id" value="{{$user->Id}}">
     <table class="table table-bordered">
         <tbody>
@@ -39,7 +39,7 @@
         </tr>
         <?php
             /*Check is current login is super admin*/
-            if( $isAdmin === 1 && $user->Id !== $isId){
+            if( $isAdmin === 1 && $user->Id !== $user_login){
         ?>
         <tr>
             <th style="vertical-align:middle;">Super Admin</th>
@@ -68,7 +68,9 @@
     </table>
     <div>
         <button id="submit" type="submit" name="button" class="btn btn-success">Save</button>
-        <a href="{{url('/view/user')}}" class="btn btn-danger">Cancel</a>
+        <?php if($isAdmin===1){?>
+            <a href="{{url('/view/user')}}" class="btn btn-danger">Cancel</a>
+        <?php }?>        
     </div>
 </form>
 @endsection

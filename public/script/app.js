@@ -62,3 +62,56 @@ function Notification()
         }
     });
 }
+
+notificationCount();
+function notificationCount()
+{
+    
+    $.ajax({
+        url: burl + '/notificationCount',
+        type: 'GET',
+        dataType: 'JSON',
+        contentType: 'application/json; charset=utf-8',
+    }).done(function (data) {
+        if(data.IsError == false){
+
+            var Language = data.Data.language;
+            var uActive = data.Data.uActive;
+            var uInactive = data.Data.uInactive;
+            var Country =  data.Data.Country;
+            var Incustomer =  data.Data.InCustomer;
+            var TrailCustomer =  data.Data.TrailCustomer;
+            var verifyCustomer =  data.Data.verifyCustomer;
+
+            if(Language > 0)
+            {
+                $('body').find('.badge_language').text(Language).show();
+            }
+            if(uActive > 0)
+            {
+                $('body').find('.badge_uActive').text(uActive).show();
+            }
+            if(uInactive > 0)
+            {
+                $('body').find('.badge_uInactive').text(uInactive).show();
+            }
+    
+            if(Country > 0)
+            {
+                $('body').find('.badge_country').text(Country).show();
+            }
+            if(verifyCustomer > 0)
+            {
+                $('body').find('.badge_verifiedcustomer').text(verifyCustomer).show();
+            }
+            if(TrailCustomer > 0)
+            {
+                $('body').find('.badge_Trailcustomer').text(TrailCustomer).show();
+            }
+            if(Incustomer > 0)
+            {
+                $('body').find('.badge_Incustomer').text(Incustomer).show();
+            }
+        }
+    });
+}

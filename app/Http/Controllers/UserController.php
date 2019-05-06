@@ -65,9 +65,11 @@ class UserController extends Controller
         if( $request->Password !=''){
             $user->Password = bcrypt($request->Password);
         }
-       
-        $user->Status = $request->Status;
-        $user->isAdmin = $request->IsAdmin;
+        if( $request->Status !='' && $request->IsAdmin !=''){
+            $user->Status = $request->Status;
+            $user->isAdmin = $request->IsAdmin;
+        }
+        
         $user->DateCreated = date('Y-m-d H:i:s');
         $user->save();
 
