@@ -10,15 +10,15 @@
             echo 'selected="selected"';
         }
     }
-    function check($value, $comvalue)
+    function isVerify($value, $comvalue)
     {
         if($value == $comvalue){
-            echo 'checked="checked"';
+            echo 'selected="selected"';
         }
     }
 ?>
 <div class="box-title">
-    <i class="fa fa-plus-square" aria-hidden="true"></i> កែប្រែព័ត៍មានអតិថិជន
+    <i class="fa fa-plus-square" aria-hidden="true"></i> Edit Customer
 </div>
 <form id="formCustomer" class="form-horizontal" method="POST" onsubmit="return false;">
     {{ csrf_field() }}
@@ -26,52 +26,46 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">លេខកូដ</label>
+                <label class="col-sm-1 control-label" style="width:150px;">Name</label>
                 <div class="col-sm-1" style="width:120px;">
-                    <input type="text" class="form-control btn-default" value="{{$customer->CustomerCode}}" readonly="">
+                    <input type="text" class="form-control" name="Name" value="{{$customer->Name}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">ឈ្មោះ</label>
+                <label class="col-sm-1 control-label" style="width:150px;">Email</label>
                 <div class="col-sm-1" style="width:300px;">
-                    <input type="text" name="CustomerName" class="form-control" value="{{$customer->CustomerName}}">
+                    <input type="text" name="Email" class="form-control" value="{{$customer->Email}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">ភេទ</label>
+                <label class="col-sm-1 control-label" style="width:150px;">Phone</label>
                 <div class="col-sm-1" style="width:300px;">
-                    <span>ប្រុស <input type="radio" name="Sex" value="1" checked="checked" {{check($customer->Sex, 1)}}/></span>
-                    <span style="margin-left:15px;">ស្រី <input type="radio" name="Sex" value="2" {{check($customer->Sex, 2)}}/></span>
+                    <input type="text" name="Phone" class="form-control" value="{{$customer->Phone}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">លេខទូរស័ព្ទ</label>
+                <label class="col-sm-1 control-label" style="width:150px;">Verify</label>
                 <div class="col-sm-1" style="width:300px;">
-                    <input type="text" name="PhoneNumber" class="form-control" value="{{$customer->PhoneNumber}}">
+                <select class="form-control btn-default" style="padding:3px" name="Verify" style="font-size:10pt;">
+                        <option value="1" {{isVerify($customer->Verify, 1)}}>Verified</option>
+                        <option value="0" {{isVerify($customer->Verify, 0)}}>Trail</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">អស័យដ្ឋាន</label>
-                <div class="col-sm-1" style="width:450px;">
-                    <input type="text" name="Address" class="form-control" value="{{$customer->Address}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-1 control-label" style="width:150px;">កំណត់ចំណាំ</label>
+                <label class="col-sm-1 control-label" style="width:150px;">Status</label>
                 <div class="col-sm-2">
-                    <select class="form-control btn-default" style="padding:3px" name="TypeId" style="font-size:10pt;">
-                        <option value="0" {{sel($customer->TypeId, 0)}}></option>
-                        <option value="1" {{sel($customer->TypeId, 1)}}>សួរព័ត៍មាន</option>
-                        <option value="2" {{sel($customer->TypeId, 2)}}>បញ្ជាទិញ</option>
-                        <option value="3" {{sel($customer->TypeId, 3)}}>បោះបង់</option>
+                    <select class="form-control btn-default" style="padding:3px" name="Status" style="font-size:10pt;">
+                        <option value="1" {{sel($customer->Status, 1)}}>Active</option>
+                        <option value="2" {{sel($customer->Status, 0)}}>Inactive</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="width:150px;"></label>
                 <div class="col-sm-1" style="width:300px;">
-                    <button type="submit" id="save" class="btn btn-success">រក្សាទុក</button>
-                    <a href="{{url('/view/customer')}}" class="btn btn-danger">បោះបង់</a>
+                    <button type="submit" id="save" class="btn btn-success">Save</button>
+                    <a href="{{url('/view/customer')}}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
         </div>

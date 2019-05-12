@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 <div class="box-title">
-    <i class="fa fa-list" aria-hidden="true"></i> បញ្ចីរាយនាមអតិថិជន
+    <i class="fa fa-list" aria-hidden="true"></i> Customer list
 </div>
 <div class="row memu-bar">
     <div class="col-sm-12">
         <div class="pull-right">
-            <a href="{{url('/create/customer')}}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> បន្ថែម</a>
+           
         </div>
     </div>
 </div>
@@ -15,11 +15,12 @@
         <table id="customerTable" class="table table-bordered table-hover">
             <thead>
                 <tr class="bg-white">
-                    <th>លេខកូដ</th>
-                    <th>ឈ្មោះអតិថិជន</th>
-                    <th>ភេទ</th>
-                    <th>លេខទូរស័ព្ទ</th>
-                    <th>អស័យដ្ឋាន</th>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Verify</th>
+                    <th>Status</th>
                     <th class="center" style="width:80px;"></th>
                 </tr>
             </thead>

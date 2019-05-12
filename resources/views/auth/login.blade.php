@@ -6,6 +6,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url('/css/plugin/sweet/sweetalert.css')}}" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="{{url('/css/base.css')}}" media="screen" title="no title" charset="utf-8">
 </head>
 <body style="background: #193048;">
@@ -13,7 +14,7 @@
         <div class="row">
             <div class="col-md-5 col-md-offset-3">
                 <div class="panel panel-default" style="margin-top:50px;">
-                    <div class="panel-heading bg-whife">Tour Guide System</div>
+                    <div class="panel-heading bg-whife">Audio Guide System</div>
                     <div class="panel-body" style="padding-top:25px; padding-buttom:25px;">
                         <form id="formLogin" class="form-horizontal" role="form" method="POST" action="{{ url('/dologin') }}">
                             {{ csrf_field() }}
@@ -38,7 +39,8 @@
                                     </button>
                                     <?php 
                                         if($login_errors ==1) {
-                                           echo  "<br/><span style='color:red'> incorrect password or username! </span>";
+                                            echo "<script>alert('incorrect password or username!')</script>";
+                                           //echo  "<br/><span style='color:red'> incorrect password or username! </span>";
                                         }else{
                                             echo "";
                                         }
@@ -55,5 +57,6 @@
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" charset="utf-8"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<script src="http://localhost/tourproject.com/public/script/plugin/bootstrap/bootstrapValidator.js" charset="utf-8"></script>
+<script src="{{url('/script/plugin/bootstrap/bootstrapValidator.js')}}" charset="utf-8"></script>
+<script src="{{url('/script/plugin/sweet/sweetalert.min.js')}}" charset="utf-8"></script>
 <script src="./script/auths/login.js" charset="utf-8"></script>

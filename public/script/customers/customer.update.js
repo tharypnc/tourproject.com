@@ -2,6 +2,7 @@
     $(':radio').iCheck({
         radioClass: 'iradio_minimal'
     });
+
     SetValidation();
     function SaveOrUpdate() {
         $('body').append(Loading());
@@ -29,24 +30,24 @@
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                CustomerCode: {
+                Name: {
                     validators: {
                         notEmpty: {
-                            message: 'លេខកូដ​ តំរូវអោយបញ្ចូល'
+                            message: 'Customer Name is requried'
                         }
                     }
                 },
-                CustomerName: {
+                Email: {
                     validators: {
                         notEmpty: {
-                            message: 'ឈ្មោះអតិថិជន់ តំរូវអោយបញ្ចូល'
+                            message: 'Customer Email is required'
                         }
                     }
                 },
-                PhoneNumber: {
+                Phone: {
                     validators: {
                         notEmpty: {
-                            message: 'លេខទូរស័ព្ធ តំរូវអោយបញ្ចូល'
+                            message: 'Customer Phone is required'
                         }
                     }
                 }

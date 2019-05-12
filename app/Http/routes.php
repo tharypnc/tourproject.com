@@ -9,22 +9,21 @@ Route::group(['prefix' => '/'], function(){
     Route::get('notification', 'HomeController@notification');
 });
 
-Route::group(['prefix' => 'transfer'], function(){
-    Route::post('/sale', 'SaleController@updatetransfer');
-});
+// Route::group(['prefix' => 'transfer'], function(){
+//     Route::post('/sale', 'SaleController@updatetransfer');
+// });
 
-Route::group(['prefix' => 'ajax'], function(){
-    Route::get('/sale/customer/{id}', 'SaleController@FindSaleByCustomerId');
-});
+// Route::group(['prefix' => 'ajax'], function(){
+//     Route::get('/sale/customer/{id}', 'SaleController@FindSaleByCustomerId');
+// });
 
 Route::group(['prefix' => 'view'], function(){
 
     Route::get('/country', 'CountryController@index');
     Route::get('/language', 'LanguageController@index');
     Route::get('/user', 'UserController@index');
+    Route::get('/customer', 'CustomerController@index');
 
-    // Route::get('/item', 'ItemController@index');
-    // Route::get('/customer', 'CustomerController@index');
     // Route::get('/askinfo', 'CustomerController@askinfo');
     // Route::get('/supplier', 'SupplierController@index');
     // Route::get('/income', 'IncomeController@index');
@@ -51,6 +50,7 @@ Route::group(['prefix' => 'find'], function(){
     Route::get('/country', 'CountryController@search');
     Route::get('/language', 'LanguageController@search');
     Route::get('/user', 'UserController@search');
+    Route::get('/customer', 'CustomerController@search');
 
     // Route::post('/customerask', 'CustomerController@indexinfo');
     // Route::post('/sale', 'SaleController@search');
@@ -92,7 +92,6 @@ Route::group(['prefix' => 'insert'], function(){
     Route::post('/language', 'LanguageController@store');
     Route::post('/user', 'UserController@store');
 
-
     // Route::post('/sale', 'SaleController@store');
     // Route::post('/income', 'IncomeController@store');
     // Route::post('/expanse', 'ExpanseController@store');
@@ -110,7 +109,7 @@ Route::group(['prefix' => 'edit'], function(){
     Route::get('/country/{id}', 'CountryController@edit');
     Route::get('/language/{id}', 'LanguageController@edit');
     Route::get('/user/{id}', 'UserController@edit');
-    // Route::get('/customer/{id}', 'CustomerController@edit');
+    Route::get('/customer/{id}', 'CustomerController@edit');
     // Route::get('/editinfo/{id}', 'CustomerController@editinfo');
     // Route::get('/supplier/{id}', 'SupplierController@edit');
     // Route::get('/income/{id}', 'IncomeController@edit');
@@ -122,8 +121,7 @@ Route::group(['prefix' => 'update'], function(){
     Route::post('/country', 'CountryController@update');
     Route::post('/language', 'LanguageController@update');
     Route::post('/user', 'UserController@update');
-
-    // Route::post('/customerask', 'CustomerController@updateinfo');
+    Route::post('/customer', 'CustomerController@update');
     // Route::post('/supplier', 'SupplierController@update');
     // Route::post('/income', 'IncomeController@update');
     // Route::post('/item', 'ItemController@update');

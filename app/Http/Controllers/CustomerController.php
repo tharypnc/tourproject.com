@@ -13,8 +13,8 @@ class CustomerController extends Controller
         $customers = Customer::all();
         return view('customers.index', ['Customers'=>$customers]);
     }
-
-    public function search()
+	
+	public function search()
     {
         $customers = Customer::all();
         $this->SetData(array('Customers'=> $customers));
@@ -42,24 +42,15 @@ class CustomerController extends Controller
     {
         $id = $request->Id;
         $customer = Customer::find($id);
-        $customer->CustomerName = $request->CustomerName;
-        $customer->Sex = $request->Sex;
-        $customer->PhoneNumber = $request->PhoneNumber;
-        $customer->Address = $request->Address;
-        $customer->TypeId = $request->TypeId;
+        $customer->Name = $request->Name;
+        $customer->Email = $request->Email;
+        $customer->Phone = $request->Phone;
+        $customer->Verify = $request->Verify;
+        $customer->Status = $request->Status;
         $customer->LastUpdated = date('Y-m-d H:i:s');
         $customer->save();
 
         return response()->json($this->Results);
     }
 
-    public function destroy($id)
-    {
-        $rowaffect = Customer::find($id)->delete();
-        if($rowaffect == 0){
-            $this->SetError(true);
-            $this->SetMessage('Error on delete customer!');
-        }
-        return response()->json($this->Results);
-      }
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Tour Guide System</title>
+  <title>Audio Guide System</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" crossorigin="anonymous">
@@ -21,12 +21,12 @@
   <input type="hidden" name="user_id" id="user_id" value="{{$user_id}}"/>
     <div class="box-left no-report">
         <div class="list-group">
-          <a href="{{url('/')}}" class="list-group-item center">Tour Guide System</a>
+          <a href="{{url('/')}}" class="list-group-item center">Audio Guide System</a>
           <a href="{{url('/view/country')}}" class="list-group-item bar"><i class="fa fa-flag" aria-hidden="true"></i> Manage Country</a>
           <a href="{{url('/view/language')}}" class="list-group-item bar"><i class="fa fa-language" aria-hidden="true"></i> Manage Language</a>
           <a href="{{url('/')}}" class="list-group-item bar"><i class="fa fa-file" aria-hidden="true"></i> Manage Content</a>
           <?php if($isAdmin ==1){?>
-            <a href="{{url('/view/user')}}" class="list-group-item bar"><i class="fa fa-users" aria-hidden="true"></i> Manage Users</a>
+            <a href="{{url('/view/user')}}" class="list-group-item bar"><i class="fa fa-users" aria-hidden="true"></i> Manage User</a>
             <a href="{{url('/view/customer')}}" class="list-group-item bar"><i class="fa fa-cart-plus" aria-hidden="true"></i> Manage Customer</a>
             <a href="{{url('/view/setting')}}" class="list-group-item bar"><i class="fa fa-cog" aria-hidden="true"></i> Manage Setting</a>
           <?php }?>

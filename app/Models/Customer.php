@@ -23,4 +23,8 @@ class Customer extends Model
     const ACTIVE = 1;
 
     const INACTIVE = 0;
+    
+    const VERIFY = 1;
+
+    const UNVERIFY = 0;
 }

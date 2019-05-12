@@ -1,17 +1,18 @@
 (function(){
 
-    $('.list-group-item:eq(4)').addClass('active');
-    ViewItem();
+    $('.list-group-item:eq(5)').addClass('active');
 
-    function ViewItem(){
-        GetItems(function(customers){
-            RenderTable(customers, function(element){
+    ViewCustomer();
+
+    function ViewCustomer(){
+        GetCustomers(function(Customers){
+            RenderTable(Customers, function(element){
                 $('#customerTable tbody').html(element);
             });
         });
     }
 
-    function GetItems(callback) {
+    function GetCustomers(callback) {
         $('body').append(Loading());
         $.ajax({
             url: burl + '/find/customer',
@@ -21,7 +22,7 @@
         }).done(function (data) {
             if(data.IsError == false){
                 if(typeof callback == 'function'){
-                    callback(data.Data);
+                    callback(data.Data.Customers);
                 }
             }
         }).complete(function (data) {
@@ -29,23 +30,30 @@
         });
     }
 
-    function RenderTable(customers, callback){
+    function RenderTable(Customers, callback){
+       
         var element = '';
-        if((customers != null) && (customers.length > 0)){
-            $.each(customers, function(index, item){
-                var sex = 'ប្រុស';
-                if(item.Sex == 2){
-                    sex = 'ស្រី';
+        if((Customers != null) && (Customers.length > 0)){
+            $.each(Customers, function(index, item){
+                var verify = 'Trail';
+                if(item.Verify == 1){
+                    verify = 'Verified';
                 }
+
+                var status = 'Inactive';
+                if(item.Status == 1){
+                    status = 'Active';
+                }
+
                 element += '<tr data-id="' + item.Id + '">' +
-                                '<td>' + item.CustomerCode + '</td>' +
-                                '<td><a href="'+ burl +'/create/sale/'+ item.Id +'">' + item.CustomerName + '</a></td>' +
-                                '<td class="center">' + sex + '</td>' +
-                                '<td class="center">' + item.PhoneNumber + '</td>' +
-                                '<td class="center">' + item.Address + '</td>' +
+                                '<td>' + (i++) + '</td>' +
+                                '<td>' + item.Name + '</td>' +
+                                '<td class="center">' + item.Email + '</td>' +
+                                '<td class="center">' + item.Phone + '</td>' +
+                                '<td class="center">' + verify + '</td>' +
+                                '<td class="center">' + status + '</td>' +
                                 '<td class="center">' +
                                     '<a href="' + burl + '/edit/customer/' + item.Id + '" class="btn btn-success btn-e"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> ' +
-                                    '<button type="button" class="btn btn-danger btn-e delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>' +
                                 '</td>'
                             '</tr>';
             });
@@ -55,34 +63,4 @@
         }
     }
 
-    $('body').on('click', '.delete', function () {
-        var select = $(this).closest('tr');
-        var id = $(select).attr('data-id');
-        swal({
-            title: 'លុប',
-            text: 'តើអ្នកចង់លុបទិន្នន័យឬ ?',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'យល់ព្រម',
-            cancelButtonText: 'បោះបង់',
-            closeOnConfirm: false
-        }, function () {
-            $('body').append(Loading());
-            $.ajax({
-                type: 'GET',
-                url: burl + '/delete/customer/' + id,
-                dataType: "JSON",
-                contentType: 'application/json; charset=utf-8',
-            }).done(function (data) {
-                if (data.IsError == false) {
-                    swal('ទិន្នន័យត្រូវបានលុបជោគជ័យ', '', 'success');
-                    $(select).remove();
-                } else {
-                    swal(data.Message, '', 'success');
-                }
-            }).complete(function (data) {
-                $('body').find('.loading').remove();
-            });
-        });
-    });
 })();
