@@ -19,6 +19,21 @@
                         <form id="formLogin" class="form-horizontal" role="form" method="POST" action="{{ url('/dologin') }}">
                             {{ csrf_field() }}
                             <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="col-md-12 control-label" style="text-align:center">
+                                        <?php 
+
+                                            if( $login_errors == 1 ) {
+                                                echo "<span style='color:red'> incorrect password or username! </span>";
+                                            }else{
+                                                echo "";
+                                            }
+                                    
+                                        ?>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-md-4 control-label">Username</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="name">
@@ -37,14 +52,6 @@
                                     <button type="submit" id="btnLogin" class="btn btn-primary">
                                         <i class="fa fa-btn fa-sign-in"></i> Log in
                                     </button>
-                                    <?php 
-                                        if($login_errors ==1) {
-                                            echo "<script>alert('incorrect password or username!')</script>";
-                                           //echo  "<br/><span style='color:red'> incorrect password or username! </span>";
-                                        }else{
-                                            echo "";
-                                        }
-                                     ?>
                                 </div>
                             </div>
                         </form>

@@ -25,6 +25,9 @@
             </thead>
             <tbody></tbody>
         </table>
+
+        {{ $countries->appends(request()->except('page'))->links() }}
+
     </div>
 </div>
 @endsection

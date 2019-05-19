@@ -1,8 +1,34 @@
 (function(){
 
     $('.list-group-item:eq(1)').addClass('active');
-    ViewItem();
+    
+    var getParam = GetURLParameter('page');
 
+    function GetURLParameter(sParam){
+
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+    
+        for (var i = 0; i < sURLVariables.length; i++) {
+            var sParameterName = sURLVariables[i].split('=');
+    
+            if (sParameterName[0] == sParam)
+    
+            {
+                return sParameterName[1];
+    
+            }
+        }
+    }
+
+    var URI = '/find/country';
+
+    if( getParam != '' ){
+
+        URI = '/find/country?page='+getParam+'';
+    }
+
+    ViewItem();
     function ViewItem(){
         GetItems(function(countries){
             RenderTable(countries, function(element){
@@ -14,14 +40,14 @@
     function GetItems(callback) {
         $('body').append(Loading());
         $.ajax({
-            url: burl + '/find/country',
+            url: burl + URI,
             type: 'GET',
             dataType: 'JSON',
             contentType: 'application/json; charset=utf-8',
         }).done(function (data) {
             if(data.IsError == false){
                 if(typeof callback == 'function'){
-                    callback(data.Data);
+                    callback(data.Data.data);
                 }
             }
         }).complete(function (data) {
@@ -35,6 +61,7 @@
         var i =1;
         if((countries != null) && (countries.length > 0)){
             $.each(countries, function(index, item){
+              
                 var status = 'Active';
                 if(item.Status == 2){
                     status = 'Inactive';

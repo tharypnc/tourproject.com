@@ -11,6 +11,12 @@
     {{ csrf_field() }}
     <div class="panel panel-default">
         <div class="panel-body">
+           @if( $result == 1 )
+                <div class="alert success bg-success">
+                    <span class="closebtn">×</span>  
+                    <strong> Data saved success!!.</strong>
+                </div>
+            @endif
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="width:150px;">Name</label>
                 <div class="col-sm-1" style="width:300px;">

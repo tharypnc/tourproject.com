@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 use Validator;
-use App\Models\Customer;
+use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-class CustomerController extends Controller
+class ContentController extends Controller
 {
     public function index()
     {
-        $customers = Customer::paginate(20);
-        return view('customers.index', ['Customers'=>$customers]);
+        $contents = Content::all();
+        return view('customers.index', ['Customers'=>$contents]);
     }
 	
 	public function search()
     {
-        $customers = Customer::paginate(20);
+        $customers = Customer::all();
         $this->SetData(array('Customers'=> $customers));
         return response()->json($this->Results);
     }
@@ -35,7 +35,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
 
-        return view('customers.edit', ['customer' => $customer ,'result' => '0']);
+        return view('customers.edit', ['customer' => $customer]);
     }
 
     public function update(Request $request)

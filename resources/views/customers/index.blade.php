@@ -26,6 +26,7 @@
             </thead>
             <tbody></tbody>
         </table>
+        {{ $Customers->appends(request()->except('page'))->links() }}
     </div>
 </div>
 @endsection

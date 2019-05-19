@@ -23,6 +23,8 @@ Route::group(['prefix' => 'view'], function(){
     Route::get('/language', 'LanguageController@index');
     Route::get('/user', 'UserController@index');
     Route::get('/customer', 'CustomerController@index');
+    Route::get('/content', 'ContentController@index');
+    Route::get('/configuration', 'ConfigurationController@index');
 
     // Route::get('/askinfo', 'CustomerController@askinfo');
     // Route::get('/supplier', 'SupplierController@index');

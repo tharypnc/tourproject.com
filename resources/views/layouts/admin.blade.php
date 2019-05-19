@@ -24,12 +24,12 @@
           <a href="{{url('/')}}" class="list-group-item center">Audio Guide System</a>
           <a href="{{url('/view/country')}}" class="list-group-item bar"><i class="fa fa-flag" aria-hidden="true"></i> Manage Country</a>
           <a href="{{url('/view/language')}}" class="list-group-item bar"><i class="fa fa-language" aria-hidden="true"></i> Manage Language</a>
-          <a href="{{url('/')}}" class="list-group-item bar"><i class="fa fa-file" aria-hidden="true"></i> Manage Content</a>
-          <?php if($isAdmin ==1){?>
+          <a href="{{url('/view/content')}}" class="list-group-item bar"><i class="fa fa-file" aria-hidden="true"></i> Manage Content</a>
+          <?php if( $isAdmin == 1 ){ ?>
             <a href="{{url('/view/user')}}" class="list-group-item bar"><i class="fa fa-users" aria-hidden="true"></i> Manage User</a>
             <a href="{{url('/view/customer')}}" class="list-group-item bar"><i class="fa fa-cart-plus" aria-hidden="true"></i> Manage Customer</a>
-            <a href="{{url('/view/setting')}}" class="list-group-item bar"><i class="fa fa-cog" aria-hidden="true"></i> Manage Setting</a>
-          <?php }?>
+            <a href="{{url('/view/configuration')}}" class="list-group-item bar"><i class="fa fa-cog" aria-hidden="true"></i> Manage Setting</a>
+          <?php } ?>
       </div>
     </div>
     <div class="box-right">

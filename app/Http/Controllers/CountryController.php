@@ -12,18 +12,19 @@ class CountryController extends Controller
 {
     public function index()
     {
-        return view('countries/index');
+        $countries = Country::paginate(10);
+        return view('countries/index', ['countries' => $countries]);
     }
 
     public function create()
     {
-        return view('countries/create');
+        return view('countries/create' ,['result' => '0']);
     }
 
     public function edit($id)
     {
         $country = Country::where('Id', '=', $id)->first();
-        return view('countries.edit', ['country' => $country]);
+        return view('countries.edit', ['country' => $country , 'result' => '0']);
     }
 
     public function update(Request $request)
@@ -71,12 +72,14 @@ class CountryController extends Controller
         $country->DateCreated = date('Y-m-d H:i:s');
         $country->save();
 
-        return view('countries/index');
+        $country = Country::where('Id', '=', $id)->first();
+        return view('countries.edit', ['country' => $country , 'result' => '1']);
+        
     }
 
     public function search()
     {
-        $countries = Country::all();
+        $countries = Country::paginate(10);
         $this->SetData($countries);
 
         return response()->json($this->Results);
@@ -109,7 +112,8 @@ class CountryController extends Controller
 
             }    
             
-            if($newFilename ==''){
+            if( $newFilename =='' ){
+
                 $country->Photo = '';
 
             }else{
@@ -123,8 +127,9 @@ class CountryController extends Controller
             $country->DateCreated = date('Y-m-d H:i:s');
             $country->save();
             $this->SetData($country);
+            
+            return view('countries.create', ['result' => '1'] );
 
-        return view('countries/index');
     }
     
     public function destroy($id)

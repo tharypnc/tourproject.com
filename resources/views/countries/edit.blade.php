@@ -13,7 +13,16 @@
     }
     $src_path ='';
     if( $country->Photo !='' ){
-        $src_path = '../../uploads/countries/'.$country->Photo.'';
+
+        if($result == 1){
+
+            $src_path = '../uploads/countries/'.$country->Photo.'';
+
+        }else{
+
+            $src_path = '../../uploads/countries/'.$country->Photo.'';
+        }
+
     }else{
          $src_path = '../../img/placeholder.png';
     }
@@ -26,6 +35,12 @@
     <input type="hidden" name="Id" value="{{$country->Id}}">
     <div class="panel panel-default">
         <div class="panel-body">
+            @if( $result == 1 )
+                <div class="alert success bg-success">
+                    <span class="closebtn">×</span>  
+                    <strong> Data updated Success!!.</strong>
+                </div>
+            @endif
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="width:150px;">Name</label>
                 <div class="col-sm-1" style="width:300px;">

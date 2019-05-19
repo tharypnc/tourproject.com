@@ -27,7 +27,7 @@
         <div class="panel-body">
             <div class="form-group">
                 <label class="col-sm-1 control-label" style="width:150px;">Name</label>
-                <div class="col-sm-1" style="width:120px;">
+                <div class="col-sm-1" style="width:300px;">
                     <input type="text" class="form-control" name="Name" value="{{$customer->Name}}">
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <div class="col-sm-2">
                     <select class="form-control btn-default" style="padding:3px" name="Status" style="font-size:10pt;">
                         <option value="1" {{sel($customer->Status, 1)}}>Active</option>
-                        <option value="2" {{sel($customer->Status, 0)}}>Inactive</option>
+                        <option value="0" {{sel($customer->Status, 0)}}>Inactive</option>
                     </select>
                 </div>
             </div>
